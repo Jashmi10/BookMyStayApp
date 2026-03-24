@@ -35,22 +35,28 @@ public class BookMyStayApp {
      * @param args Command-Line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Welcome to the hotel booking Management System \nSystem initialized Successfully");
-        SuiteRoom suiteRoom = new SuiteRoom();
-        SingleRoom singleRoom= new SingleRoom();
-        DoubleRoom doubleRoom= new DoubleRoom();
-        suiteRoom.displayRoomDetails();
-        singleRoom.displayRoomDetails();
-        doubleRoom.displayRoomDetails();
-        System.out.println("\n--- Room Inventory ---");
 
+        System.out.println("Welcome to the Hotel Booking Management System");
+        System.out.println("System initialized Successfully\n");
+
+        // Room objects (Use Case 2)
+        SuiteRoom suiteRoom = new SuiteRoom();
+        SingleRoom singleRoom = new SingleRoom();
+        DoubleRoom doubleRoom = new DoubleRoom();
+
+        // Inventory (Use Case 3)
         RoomInventory inventory = new RoomInventory();
 
-        // Display inventory
-        for (String roomType : inventory.getRoomAvailability().keySet()) {
-            int count = inventory.getRoomAvailability().get(roomType);
-            System.out.println(roomType + " -> " + count);
-        }
+        // NEW: Search Service (Use Case 4)
+        RoomSearchService searchService = new RoomSearchService();
+
+        // Perform search (read-only operation)
+        searchService.searchAvailableRooms(
+                inventory,
+                singleRoom,
+                doubleRoom,
+                suiteRoom
+        );
     }
 
 }
