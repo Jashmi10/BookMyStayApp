@@ -36,6 +36,12 @@ public class BookMyStayApp {
      */
     public static void main(String[] args) {
         System.out.println("Welcome to the hotel booking Management System \nSystem initialized Successfully");
+        SuiteRoom suiteRoom = new SuiteRoom();
+        SingleRoom singleRoom= new SingleRoom();
+        DoubleRoom doubleRoom= new DoubleRoom();
+        suiteRoom.displayRoomDetails();
+        singleRoom.displayRoomDetails();
+        doubleRoom.displayRoomDetails();
     }
 
 }
