@@ -16,10 +16,12 @@ public class BookingRequestQueue {
         requestQueue.offer(reservation);
     }
 
+
     /** Retrieves and removes the next booking request from the queue. */
     public Reservation getNextRequest() {
         return requestQueue.poll();
     }
+
 
     /** Checks whether there are pending booking requests. */
     public boolean hasPendingRequests() {

@@ -1,7 +1,5 @@
 
-/**
-
-        * =
+/*** =
         * MAIN CLASS - UseCase1HotelBookingApp
 
 * Use Case 1: Application Entry & Welcome Message
