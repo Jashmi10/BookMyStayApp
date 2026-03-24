@@ -1,7 +1,5 @@
 
-/**
-
-        * =
+/*** =
         * MAIN CLASS - UseCase1HotelBookingApp
 
 * Use Case 1: Application Entry & Welcome Message
@@ -47,16 +45,32 @@ public class BookMyStayApp {
         // Inventory (Use Case 3)
         RoomInventory inventory = new RoomInventory();
 
-        // NEW: Search Service (Use Case 4)
+        // Search Service (Use Case 4)
         RoomSearchService searchService = new RoomSearchService();
+        searchService.searchAvailableRooms(inventory, singleRoom, doubleRoom, suiteRoom);
 
-        // Perform search (read-only operation)
-        searchService.searchAvailableRooms(
-                inventory,
-                singleRoom,
-                doubleRoom,
-                suiteRoom
-        );
+        // Display booking queue header
+        System.out.println("\n--- Booking Request Queue ---");
+
+        // Initialize booking queue (Use Case 5)
+        BookingRequestQueue bookingQueue = new BookingRequestQueue();
+
+        // Create booking requests (use correct room keys)
+        Reservation r1 = new Reservation("Abhi", "SingleRoom");
+        Reservation r2 = new Reservation("Subha", "DoubleRoom");
+        Reservation r3 = new Reservation("Vanmathi", "SuiteRoom");
+
+        // Add requests to the queue
+        bookingQueue.addRequest(r1);
+        bookingQueue.addRequest(r2);
+        bookingQueue.addRequest(r3);
+
+        // Display queued booking requests in FIFO order
+        while (bookingQueue.hasPendingRequests()) {
+            Reservation next = bookingQueue.getNextRequest();
+            System.out.println("Guest: " + next.getGuestName()
+                    + " , Requested Room: " + next.getRoomType());
+        }
     }
 
 }
