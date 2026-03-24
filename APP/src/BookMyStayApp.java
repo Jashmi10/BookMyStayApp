@@ -42,6 +42,15 @@ public class BookMyStayApp {
         suiteRoom.displayRoomDetails();
         singleRoom.displayRoomDetails();
         doubleRoom.displayRoomDetails();
+        System.out.println("\n--- Room Inventory ---");
+
+        RoomInventory inventory = new RoomInventory();
+
+        // Display inventory
+        for (String roomType : inventory.getRoomAvailability().keySet()) {
+            int count = inventory.getRoomAvailability().get(roomType);
+            System.out.println(roomType + " -> " + count);
+        }
     }
 
 }
